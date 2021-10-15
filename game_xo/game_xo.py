@@ -78,25 +78,22 @@ class TicTacGame:
 
     def check_winner(self):
         if (
-            self.game_board[1] == self.game_board[5] == self.game_board[9] is not None
-            or self.game_board[3] == self.game_board[5] == self.game_board[7]
-            and self.game_board[5] is not None
+            self.game_board[1] == self.game_board[5]
+            == self.game_board[9] is not None
+            or self.game_board[3] == self.game_board[5]
+            == self.game_board[7] is not None
         ):
             return True
         for i in range(1, 10, 3):
             if (
-                self.game_board[i]
-                == self.game_board[i + 1]
-                == self.game_board[i + 2]
-                is not None
+                self.game_board[i] == self.game_board[i + 1]
+                == self.game_board[i + 2] is not None
             ):
                 return True
         for i in range(1, 4):
             if (
-                self.game_board[i]
-                == self.game_board[i + 3]
-                == self.game_board[i + 6]
-                is not None
+                self.game_board[i] == self.game_board[i + 3]
+                == self.game_board[i + 6] is not None
             ):
                 return True
         return False

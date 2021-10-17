@@ -18,3 +18,7 @@ def custom_KeyError(item, class_dict):
         print(Fore.RED + "ValueError input number 1-9", Style.RESET_ALL)
         move = False
     return move
+
+
+if __name__ == '__main__':
+    pass

@@ -1,6 +1,6 @@
 import pytest
 
-from game_xo import exceptions
+from game.exceptions import custom_KeyError, custom_ValueError
 
 
 @pytest.mark.parametrize(
@@ -37,7 +37,7 @@ from game_xo import exceptions
     ],
 )
 def test_validate_input(item, answer):
-    assert exceptions.custom_ValueError(item) == answer
+    assert custom_ValueError(item) == answer
 
 
 test_dictionary = {
@@ -83,8 +83,8 @@ test_dictionary = {
     ],
 )
 def test_find_in_dict(item, answer):
-    assert exceptions.custom_KeyError(item, test_dictionary) == answer
+    assert custom_KeyError(item, test_dictionary) == answer
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     pytest.main()

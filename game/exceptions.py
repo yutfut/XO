@@ -6,7 +6,7 @@ def custom_ValueError(item):
     try:
         move = int(item)
     except ValueError:
-        print(Fore.RED + "ValueError input number 1-9", Style.RESET_ALL)
+        print(Fore.RED + "ValueError input number 1-9" + Style.RESET_ALL)
     return move
 
 

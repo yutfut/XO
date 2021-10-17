@@ -1,4 +1,5 @@
 import os
+import sys
 
 from colorama import Fore, Style
 
@@ -29,26 +30,22 @@ class TicTacGame:
             if self.game_board[key] is None:
                 print(key, end=" ")
             else:
-                print(self.game_board[key], end=" ")
+                print(Fore.YELLOW + self.game_board[key] + Style.RESET_ALL, end=" ")
             if key % 3 == 0:
                 print()
 
-    def validate_input(self, i):
-        while True:
-            move = input()
-            move = custom_ValueError(move)
-            if move is None:
-                continue
-            if custom_KeyError(move, self.game_board) is False:
-                continue
-            if self.game_board[move] is None:
-                if i % 2 == 0:
-                    self.game_board[move] = "x"
-                else:
-                    self.game_board[move] = "o"
-                break
-            else:
-                print(Fore.RED + "InputError", Style.RESET_ALL)
+    def validate_input(self, symbol, item):
+        move = custom_ValueError(item)
+        if move is None:
+            return False
+        if custom_KeyError(move, self.game_board) is False:
+            return False
+        if self.game_board[move] is None:
+            self.game_board[move] = symbol
+            return True
+        else:
+            print(Fore.RED + "InputError", Style.RESET_ALL)
+            return False
 
     def start_game(
             self,
@@ -62,10 +59,13 @@ class TicTacGame:
             self.show_board()
             if i % 2 == 0:
                 name = self.first_name_gamer
+                symbol = 'x'
             else:
                 name = self.second_name_gamer
-            print(f"the player's move is {name}")
-            self.validate_input(i)
+                symbol = 'o'
+            while True:
+                if self.validate_input(symbol, input(f"the player's move is {name}: ")):
+                    break
             if self.check_winner():
                 os.system("clear")
                 print(Fore.GREEN + f"WIN {name}")

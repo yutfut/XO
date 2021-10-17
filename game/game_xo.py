@@ -1,5 +1,4 @@
 import os
-import sys
 
 from colorama import Fore, Style
 
@@ -30,7 +29,11 @@ class TicTacGame:
             if self.game_board[key] is None:
                 print(key, end=" ")
             else:
-                print(Fore.YELLOW + self.game_board[key] + Style.RESET_ALL, end=" ")
+                print(
+                    Fore.YELLOW +
+                    self.game_board[key] +
+                    Style.RESET_ALL, end=" "
+                )
             if key % 3 == 0:
                 print()
 
@@ -64,7 +67,9 @@ class TicTacGame:
                 name = self.second_name_gamer
                 symbol = 'o'
             while True:
-                if self.validate_input(symbol, input(f"the player's move is {name}: ")):
+                if self.validate_input(
+                        symbol, input(f"the player's move is {name}: ")
+                ):
                     break
             if self.check_winner():
                 os.system("clear")

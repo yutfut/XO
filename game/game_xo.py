@@ -2,6 +2,8 @@ import os
 
 from colorama import Fore, Style
 
+from game.exceptions import custom_KeyError, custom_ValueError
+
 
 class TicTacGame:
     game_board = {
@@ -95,9 +97,3 @@ class TicTacGame:
             ):
                 return True
         return False
-
-
-if __name__ == "__main__":
-    from exceptions import custom_KeyError, custom_ValueError
-    game = TicTacGame()
-    game.start_game()
